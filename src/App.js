@@ -17,11 +17,15 @@ function App() {
   
   useEffect(() => {
         getApartmentsFromApi();
+
       }, []);
-  
+
   
   const baseUrl = " https://ironbnb-m3.herokuapp.com"
   
+
+
+
       const getApartmentsFromApi = () => {
         axios.get(baseUrl + "/apartments")
           .then((response) => {
@@ -39,10 +43,11 @@ const createApartment = (newApartmentObj) =>{
   .post(baseUrl+ '/apartments', newApartmentObj)
   .then((response) => {
     console.log(response.data);
-    setApartmentsArr((prevListOfApartments) => {
-      const newList = [newApartmentObj, ...prevListOfApartments];
-      return newList;
-    });
+    getApartmentsFromApi();
+  // setApartmentsArr((prevListOfApartments) => {
+   //  const newList = [newApartmentObj, ...prevListOfApartments];
+    // return newList;
+   // });
   })
   .catch((e) => {
     console.log(e);

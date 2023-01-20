@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 function CreateApartment (props) {
     const [title,setTitle] = useState("");
     const [pricePerDay,setpricePerDay] = useState(0);
+    const [img,setimg] = useState("");
     const navigate = useNavigate();
     const handleSubmit = (e) =>{
         e.preventDefault();
@@ -13,7 +14,8 @@ function CreateApartment (props) {
         const newApartment = {
          
           "title": title,
-          "pricePerDay": pricePerDay
+          "pricePerDay": pricePerDay,
+          "img":img
          
         };
     
@@ -23,6 +25,7 @@ function CreateApartment (props) {
     setTitle("");
     
     setpricePerDay(0);
+    setimg("");
     navigate("/apartments")
     
     }
@@ -51,6 +54,13 @@ placeholder="pricePerDay"
  min ={ 0 }max = {100} 
  value ={pricePerDay}
 onChange = {(e) =>{setpricePerDay(e.target.value)}} />
+</label>
+<label>
+Image:
+<input type ="url" name = "img"
+placeholder="Enter a URL for image"
+ value ={img}
+onChange = {(e) =>{setimg(e.target.value)}} />
 </label>
 
   <button>Create Apartment</button>
